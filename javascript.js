@@ -119,12 +119,20 @@ function showPassword() {
 
 // Function to display the passwordList
 function displayPasswordList() {
-  const passwordListContainer = document.getElementById('passwordList');
-  passwordListContainer.innerHTML = ''; // Clear the previous list
+  const passwordHistory = document.getElementById('passwordList');
+  passwordHistory.innerHTML = ''; // Clear the previous list
 
-  for (const generatedPassword of passwordList) {
+  for (let i = passwordList.length - 1; i >= 0; i--) {
+    const generatedPassword = passwordList[i];
     const listItem = document.createElement('li');
     listItem.textContent = generatedPassword;
-    passwordListContainer.appendChild(listItem);
+    passwordHistory.appendChild(listItem);
   }
+}
+
+//Function to toggle password history
+function togglePasswordHistory() {
+  const passwordHistory = document.getElementById('passwordHistory');
+  const currentDisplay = passwordHistory.style.display;
+  passwordHistory.style.display = currentDisplay === 'none' ? 'block' : 'none';
 }
